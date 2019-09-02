@@ -8,6 +8,7 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
+    currentTab: 0
 
   },
 
@@ -32,5 +33,37 @@ Page({
 
 
 
+  },
+
+  //swipe to switch
+  swiperTab: function (e) {
+    var that = this;
+    console.log(e);
+    that.setData({
+      currentTab: e.detail.current
+    });
+  },
+
+  //click to switch
+  clickTab: function (e) {
+    var that = this;
+    console.log(e);
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
+
+  click_the_text: function(e){
+    wx.navigateTo({
+      url: '../baidu/baidu',
+    })
   }
+
+
+
 })
+ 
